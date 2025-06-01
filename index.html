@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> QuantReasoning | Computational Biology & Data Science </title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Inter&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #e4e8ed;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    a {
+      color: #2c7be5;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    header {
+      background-color: #172b4d;
+      color: white;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+    nav a {
+      margin-left: 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    main {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+    section {
+      margin-bottom: 4rem;
+    }
+    h2 {
+      border-bottom: 3px solid #2c7be5;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 700;
+      color: #172b4d;
+    }
+    p {
+      line-height: 1.6;
+      font-size: 1.1rem;
+      color: #444;
+    }
+    /* Projects grid */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+    }
+    .project-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+      transition: box-shadow 0.2s ease;
+    }
+    .project-card:hover {
+      box-shadow: 0 6px 12px rgb(0 0 0 / 0.15);
+    }
+    .project-title {
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #172b4d;
+    }
+    .project-desc {
+      font-size: 0.95rem;
+      color: #555;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #172b4d;
+      color: white;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>QuantReasoning</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I am a data scientist and biomedical researcher with a robust foundation in medical sciences, complemented by advanced training in statistics and hands-on experience in wet lab techniques, 
+        including immunological and genetic assays and drug development. My multidisciplinary expertise spans single-cell RNA sequencing, multi-omics data integration, and machine learning, using Python and R, which I apply to translational 
+        research aimed at studying disease mechanisms in-depth and identifying clinically relevant biomarkers.
+     </p>
+     <p>
+        QuantReasoning highlights my contributions to bioinformatics, statistical modeling, and computational biology, showcasing my ability to design and implement customised analytical workflows. I am experienced in working
+        within interdisciplinary teams, bridging experimental and clinical domains to drive impactful biomedical discoveries and support precision medicine initiatives.
+    </p>
+    </section>
+
+    <section id="projects">
+      <h2>Selected Projects</h2>
+      <div class="projects">
+        <div class="project-card">
+          <div class="project-title"> Single-Cell RNA-seq Analysis </div>
+          <div class="project-desc">
+            This project performs single-cell transcriptomic analysis of human lung cancer FFPE tissue using R (Seurat, DESeq2, ggplot2) on publicly available 10x Genomics data to identify and visualize cell types and differentially expressed genes.
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-title"> <a href="https://github.com/ancadordea/Cancer_Cells_Classification" target="_blank" rel="noopener noreferrer"> Cancer Cell Classification </a> </div>
+          <div class="project-desc">
+            A supervised classification analysis in Python, on data derived from breast cancer cell nuclei features, using pandas, scikit-learn, matplotlib, and seaborn to classify tumors as malignant or benign, achieving 94–96% accuracy with a Naive Bayes classifier.
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-title"> <a href="https://github.com/ancadordea/KNN-CV_Breast_Cancer_Diagnosis_Model" target="_blank" rel="noopener noreferrer">  KNN and Cross Validation Cancer Model </a> </div>
+          <div class="project-desc">
+            This project uses Python and the K-Nearest Neighbors (KNN) algorithm to classify tumors in the Breast Cancer Wisconsin dataset, achieving a test set accuracy of 95.7% through feature scaling, cross-validation, and evaluation with precision, recall, F1-score, and a confusion matrix.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="social-links"></div>
+        <div style="text-align: center;">
+            <a href="https://www.linkedin.com/in/anca-dordea-562159225/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+            <a href="https://github.com/ancadordea" target="_blank" rel="noopener noreferrer">GitHub</a> |
+        </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 QuantReasoning. All rights reserved.
+  </footer>
+</body>
+</html>
