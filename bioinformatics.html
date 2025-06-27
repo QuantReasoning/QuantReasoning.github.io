@@ -2,6 +2,121 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> QuantReasoning | Computational Biology & Data Science </title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Inter&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #e4e8ed;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    a {
+      color: #2c7be5;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    header {
+      background-color: #172b4d;
+      color: white;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+    nav a {
+      margin-left: 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    main {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+    section {
+      margin-bottom: 4rem;
+    }
+    h2 {
+      border-bottom: 3px solid #2c7be5;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 700;
+      color: #172b4d;
+    }
+    p {
+      line-height: 1.6;
+      font-size: 1.1rem;
+      color: #444;
+    }
+    /* Projects grid */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+    }
+    .project-card {
+      background: rgb(117, 157, 196);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+      transition: box-shadow 0.2s ease;
+    }
+    .project-card:hover {
+      box-shadow: 0 6px 12px rgb(0 0 0 / 0.15);
+    }
+    .project-title {
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #172b4d;
+    }
+    .project-desc {
+      font-size: 0.95rem;
+      color: #555;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #172b4d;
+      color: white;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>QuantReasoning</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="bioinformatics.html">Bioinformatics</a>
+       <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+<head>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bioinformatics Analyses Explained</title>
   <style>
@@ -239,6 +354,9 @@
     <li><strong>GATK</strong>: Toolkit for variant discovery in high-throughput sequencing data. Input: BAM, VCF. Used in clinical and population genomics.</li>
   </ul>
 </div>
-
+  <footer>
+    &copy; 2025 QuantReasoning. All rights reserved.
+  </footer>
+  
 </body>
 </html>
