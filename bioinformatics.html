@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bioinformatics Analyses Explained</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    h1, h2 {
+      color: #005792;
+    }
+    .analysis {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .example {
+      background: #f9f9f9;
+      padding: 10px;
+      font-family: monospace;
+      overflow-x: auto;
+      border-left: 4px solid #005792;
+    }
+    a {
+      color: #0073e6;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bioinformatics Analyses for Beginners</h1>
+
+  <div class="analysis">
+    <h2>1. Next-Generation Sequencing (NGS)</h2>
+    <p><strong>Description:</strong> NGS is a high-throughput DNA sequencing technology that allows for rapid sequencing of entire genomes or specific regions of interest.</p>
+    <p><strong>Aim:</strong> To identify the sequence of nucleotides in DNA and detect mutations, variants, or other genomic features.</p>
+    <p><strong>Example Data:</strong></p>
+    <div class="example">
+      @SEQ_ID<br />
+      GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATTACTGGTCAGG<br />
+      +<br />
+      !''*((((***+))%%%++)(%%%%).1***-+*''))**55CCF>>>>>>CCCCCCC65
+    </div>
+    <p><strong>Applications:</strong> Whole genome sequencing, cancer genomics, microbial detection, evolutionary studies.</p>
+    <p><strong>Tools:</strong></p>
+    <ul>
+      <li><strong>FastQC</strong>: Quality control tool for raw sequence data.</li>
+      <li><strong>BWA</strong>: Aligns DNA sequences to a reference genome.</li>
+      <li><strong>Bowtie</strong>: Ultrafast short read aligner.</li>
+      <li><strong>SAMtools</strong>: Processes alignment files in SAM/BAM format.</li>
+      <li><strong>GATK</strong>: Toolkit for variant discovery and genotyping.</li>
+    </ul>
+    <p><strong>Reference:</strong> <a href="https://www.nature.com/articles/nrg2626" target="_blank">Mardis, E. R. (2008). Next-generation DNA sequencing methods. Nature Reviews Genetics.</a></p>
+  </div>
+
+  <div class="analysis">
+    <h2>2. RNA Sequencing (RNA-seq)</h2>
+    <p><strong>Description:</strong> RNA-seq is used to analyze the quantity and sequences of RNA in a sample using NGS technologies.</p>
+    <p><strong>Aim:</strong> To quantify gene expression, discover novel transcripts, and analyze transcript isoforms.</p>
+    <p><strong>Example Data:</strong></p>
+    <div class="example">
+      GeneID    Sample1    Sample2    Sample3<br />
+      ACTB      1500       1478       1602<br />
+      GAPDH     1320       1294       1355
+    </div>
+    <p><strong>Applications:</strong> Differential gene expression, biomarker discovery, cell type classification.</p>
+    <p><strong>Tools:</strong></p>
+    <ul>
+      <li><strong>STAR</strong>: Fast spliced read aligner for RNA-seq data.</li>
+      <li><strong>HISAT2</strong>: Aligns RNA-seq reads using a graph-based approach.</li>
+      <li><strong>StringTie</strong>: Assembles and quantifies RNA transcripts.</li>
+      <li><strong>DESeq2</strong>: Performs differential gene expression analysis.</li>
+      <li><strong>EdgeR</strong>: Statistical analysis of count-based expression data.</li>
+    </ul>
+    <p><strong>Reference:</strong> <a href="https://www.nature.com/articles/nrg2484" target="_blank">Wang, Z., Gerstein, M., & Snyder, M. (2009). RNA-Seq: a revolutionary tool for transcriptomics. Nature Reviews Genetics.</a></p>
+  </div>
+
+   <div class="analysis">
+    <h2>3. Single-cell RNA Sequencing (scRNA-seq)</h2>
+    <p><strong>Description:</strong> scRNA-seq captures gene expression data at the resolution of individual cells.</p>
+    <p><strong>Aim:</strong> To uncover cellular heterogeneity and identify unique cell types and states.</p>
+    <p><strong>Example Data:</strong></p>
+    <div class="example">
+      CellID   GeneA   GeneB   GeneC<br />
+      Cell_1   0       25      4<br />
+      Cell_2   5       0       3
+    </div>
+    <p><strong>Applications:</strong> Developmental biology, cancer research, immunology, neuroscience.</p>
+    <p><strong>Tools:</strong></p>
+    <ul>
+      <li><strong>Cell Ranger</strong>: Preprocesses raw sequencing data from 10x Genomics platform.</li>
+      <li><strong>Seurat</strong>: R toolkit for quality control, analysis, and exploration of scRNA-seq data.</li>
+      <li><strong>Scanpy</strong>: Python-based library for large-scale single-cell data analysis.</li>
+      <li><strong>Monocle</strong>: For trajectory inference and pseudotime analysis.</li>
+    </ul>
+    <p><strong>Reference:</strong> <a href="https://www.nature.com/articles/nmeth.4662" target="_blank">Zheng, G. X. et al. (2017). Massively parallel digital transcriptional profiling of single cells. Nature Methods.</a></p>
+  </div>
+
+  <div class="analysis">
+    <h2>4. Variant Calling</h2>
+    <p><strong>Description:</strong> Identifying variations such as SNPs and indels from DNA sequencing data.</p>
+    <p><strong>Aim:</strong> To find genomic differences that may be associated with disease or traits.</p>
+    <p><strong>Example Data:</strong></p>
+    <div class="example">
+      CHROM POS     ID   REF ALT QUAL FILTER INFO<br />
+      1     897325  .    G   A   50   PASS   .
+    </div>
+    <p><strong>Applications:</strong> Personalized medicine, genetic diagnostics, GWAS studies.</p>
+    <p><strong>Tools:</strong></p>
+    <ul>
+      <li><strong>GATK</strong>: Performs base recalibration, variant calling, and filtering.</li>
+      <li><strong>FreeBayes</strong>: Bayesian variant caller for diploid and polyploid genomes.</li>
+      <li><strong>SAMtools</strong>: Supports variant calling from alignments.</li>
+      <li><strong>bcftools</strong>: Manipulates VCF/BCF files and performs variant calling.</li>
+    </ul>
+    <p><strong>Reference:</strong> <a href="https://genome.cshlp.org/content/19/9/1655" target="_blank">DePristo, M. A. et al. (2009). A framework for variation discovery and genotyping using NGS data. Genome Research.</a></p>
+  </div>
+
+  <div class="analysis">
+    <h2>5. Metagenomics</h2>
+    <p><strong>Description:</strong> Sequencing of DNA from environmental or clinical samples to study microbial communities without isolation.</p>
+    <p><strong>Aim:</strong> To analyze the diversity and function of microbial populations.</p>
+    <p><strong>Example Data:</strong></p>
+    <div class="example">
+      Taxon     Relative Abundance (%)<br />
+      Bacteroides   34.2<br />
+      Firmicutes    27.8<br />
+      Proteobacteria 15.6
+    </div>
+    <p><strong>Applications:</strong> Gut microbiome analysis, environmental monitoring, infectious disease diagnostics.</p>
+    <p><strong>Tools:</strong></p>
+    <ul>
+      <li><strong>QIIME2</strong>: Comprehensive platform for microbiome analysis.</li>
+      <li><strong>Kraken2</strong>: Taxonomic classifier using exact k-mer matches.</li>
+      <li><strong>MetaPhlAn</strong>: Profiles microbial communities using marker genes.</li>
+      <li><strong>HUMAnN</strong>: Infers metabolic pathways from microbial gene families.</li>
+    </ul>
+    <p><strong>Reference:</strong> <a href="https://www.nature.com/articles/nature06244" target="_blank">Turnbaugh, P. J. et al. (2007). The human microbiome project. Nature.</a></p>
+  </div>
+
+  <div class="analysis">
+    <h2>6. Epigenomics (ChIP-seq)</h2>
+    <p><strong>Description:</strong> ChIP-seq combines chromatin immunoprecipitation with NGS to identify DNA-binding sites of proteins.</p>
+    <p><strong>Aim:</strong> To study histone modifications, transcription factor binding, and chromatin structure.</p>
+    <p><strong>Example Data:</strong></p>
+    <div class="example">
+      chr1	345234	345678	peak_1	1000	+
+      chr1	456000	456300	peak_2	850	-
+    </div>
+    <p><strong>Applications:</strong> Gene regulation, cancer epigenetics, developmental biology.</p>
+    <p><strong>Tools:</strong></p>
+    <ul>
+      <li><strong>MACS2</strong>: Peak calling for ChIP-seq data.</li>
+      <li><strong>HOMER</strong>: Performs motif analysis and annotation of peaks.</li>
+      <li><strong>ChIPseeker</strong>: Annotates ChIP-seq peaks with genomic features.</li>
+      <li><strong>IGV</strong>: Visualizes alignment data and peak tracks.</li>
+    </ul>
+    <p><strong>Reference:</strong> <a href="https://www.cell.com/fulltext/S0092-8674(07)01403-7" target="_blank">Barski, A. et al. (2007). High-resolution profiling of histone methylations in the human genome. Cell.</a></p>
+  </div>
+
+  <div class="analysis">
+    <h2>7. Proteomics</h2>
+    <p><strong>Description:</strong> Proteomics involves the large-scale study of proteins, their structures, and functions.</p>
+    <p><strong>Aim:</strong> To quantify protein abundance, identify post-translational modifications, and protein-protein interactions.</p>
+    <p><strong>Example Data:</strong></p>
+    <div class="example">
+      Protein_ID   Sample_A   Sample_B   Fold_Change<br />
+      P12345       1200       800        1.5
+    </div>
+    <p><strong>Applications:</strong> Disease biomarker discovery, drug target identification, systems biology.</p>
+    <p><strong>Tools:</strong></p>
+    <ul>
+      <li><strong>MaxQuant</strong>: Identifies and quantifies proteins from mass spectrometry data.</li>
+      <li><strong>Perseus</strong>: Downstream statistical analysis of MaxQuant output.</li>
+      <li><strong>Proteome Discoverer</strong>: Thermo's platform for data interpretation from MS experiments.</li>
+      <li><strong>OpenMS</strong>: Open-source library for LC-MS data analysis.</li>
+    </ul>
+    <p><strong>Reference:</strong> <a href="https://www.nature.com/articles/nbt.1511" target="_blank">Cox, J. & Mann, M. (2008). MaxQuant enables high peptide identification rates and proteome-wide quantification. Nature Biotechnology.</a></p>
+  </div>
+
+  <div class="analysis">
+    <h2>8. Phylogenetics & Comparative Genomics</h2>
+    <p><strong>Description:</strong> This analysis investigates evolutionary relationships among organisms and compares their genomes to identify conserved genes and genomic regions.</p>
+    <p><strong>Aim:</strong> To study evolutionary relationships and gene conservation.</p>
+    <p><strong>Example Data:</strong></p>
+   <div class="example">
+      Species     Gene_Sequence<br />
+      Human       ATGCGTAGCTAG<br />
+      Chimp       ATGCGCAGCTAG<br />
+      Mouse       ATGTGTAGCTAG
+   </div>
+   <p><strong>Applications:</strong> Evolutionary biology, taxonomy, functional genomics.</p>
+   <p><strong>Tools:</strong></p>
+  <ul>
+    <li><strong>MEGA</strong>: For constructing and visualizing phylogenetic trees.</li>
+    <li><strong>Clustal Omega</strong>: For multiple sequence alignment.</li>
+    <li><strong>MAFFT</strong>: Fast and accurate sequence alignment tool.</li>
+    <li><strong>IQ-TREE</strong>: Model selection and fast tree building with statistical support.</li>
+  </ul>
+  </div>
+
+ <div class="analysis">
+  <h2>. Genome-Wide Association Studies (GWAS)</h2>
+  <p><strong>Description:</strong> GWAS aims to link specific genetic variants with complex traits or diseases by scanning the genomes of many individuals.</p>
+  <p><strong>Aim:</strong> Associate specific genetic variants with traits or diseases.</p>
+  <p><strong>Example Data:</strong></p>
+  <div class="example">
+    SNP_ID   Chromosome   Position   p-Value<br />
+    rs123    1            123456     0.00001
+  </div>
+  <p><strong>Applications:</strong> Medical genetics, trait discovery, precision medicine.</p>
+  <p><strong>Tools:</strong></p>
+  <ul>
+    <li><strong>PLINK</strong>: Standard tool for GWAS, QC, and association analysis.</li>
+    <li><strong>BOLT-LMM</strong>: Efficient mixed model association analysis.</li>
+    <li><strong>GEMMA</strong>: Genome-wide mixed model analysis for continuous and binary traits.</li>
+  </ul>
+
+
+</div>
+
+<div class="analysis">
+  <h2>Most Popular Software Tools in Bioinformatics</h2>
+  <p>These tools are used across multiple types of analyses and are considered staples in the field due to their flexibility, community support, and wide adoption:</p>
+  <ul>
+    <li><strong>BLAST</strong>: Compares nucleotide or protein sequences to sequence databases. Used in genomics, metagenomics, and phylogenetics. Works with FASTA/GenBank files.</li>
+    <li><strong>Bioconductor</strong>: R-based project with packages for RNA-seq, methylation, and more. Common in transcriptomics and statistical genomics. Input: gene count matrices, expression tables.</li>
+    <li><strong>Galaxy</strong>: Web-based platform integrating many tools (e.g., NGS, ChIP-seq) with GUI. Used in education, research, and reproducibility workflows. Input: FASTQ, BAM, GTF, VCF files.</li>
+    <li><strong>Nextflow</strong>: Workflow manager for scalable, reproducible pipelines in genomics and beyond. Works with large-scale NGS and multi-omics datasets.</li>
+    <li><strong>IGV (Integrative Genomics Viewer)</strong>: Visualization tool for inspecting alignments, variants, and annotations. Input: BAM, VCF, BED files.</li>
+    <li><strong>Samtools</strong>: Toolkit for processing and analyzing SAM/BAM files. Used in any NGS pipeline (variant calling, alignment QC).</li>
+    <li><strong>GATK</strong>: Toolkit for variant discovery in high-throughput sequencing data. Input: BAM, VCF. Used in clinical and population genomics.</li>
+  </ul>
+</div>
+
+</body>
+</html>
