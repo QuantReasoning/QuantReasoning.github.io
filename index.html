@@ -1,120 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title> QuantReasoning | Computational Biology & Data Science </title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Inter&display=swap" rel="stylesheet" />
-  <style>
-    /* Reset and base */
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #e4e8ed;
-      color: #222;
-      margin: 0;
-      padding: 0;
-    }
-    a {
-      color: #2c7be5;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+ <style>
+  :root {
+    --primary: #00b3b3;
+    --accent: #0a2342;
+    --bg-light: #f4f7fa;
+    --card-bg: #ffffff;
+    --text: #1e1e1e;
+    --muted: #5f6b7a;
+    --shadow: rgba(0, 0, 0, 0.08);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-light);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  header {
+    background-color: var(--accent);
+    color: white;
+    padding: 1.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px var(--shadow);
+  }
+
+  header h1 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    margin: 0;
+  }
+
+  nav a {
+    margin-left: 1.5rem;
+    font-size: 1rem;
+    color: white;
+  }
+
+  nav a:hover {
+    color: var(--primary);
+  }
+
+  main {
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+  }
+
+  section {
+    margin-bottom: 4rem;
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    border-left: 4px solid var(--primary);
+    padding-left: 0.75rem;
+  }
+
+  p {
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  /* Grid and Cards */
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .project-card {
+    background: var(--card-bg);
+    padding: 1.6rem;
+    border-radius: 10px;
+    border: 1px solid #e1e8ed;
+    box-shadow: 0 4px 10px var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    backdrop-filter: blur(4px);
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+  }
+
+  .project-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  .project-desc {
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+
+  /* Contact Section */
+  #contact div {
+    margin-top: 1rem;
+    font-size: 1.05rem;
+    text-align: center;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: var(--accent);
+    color: white;
+    font-size: 0.9rem;
+    margin-top: 4rem;
+  }
+
+  @media (max-width: 600px) {
     header {
-      background-color: #172b4d;
-      color: white;
-      padding: 1.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      flex-direction: column;
+      align-items: flex-start;
     }
-    header h1 {
-      font-family: 'Roboto Mono', monospace;
-      font-weight: 700;
-      font-size: 1.8rem;
-      letter-spacing: 2px;
-      margin: 0;
-    }
+
     nav a {
-      margin-left: 1.5rem;
-      font-weight: 600;
-      font-size: 1rem;
+      margin-left: 0;
+      margin-right: 1rem;
+      display: inline-block;
+      margin-top: 0.5rem;
     }
+
     main {
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
+      padding: 0 1rem;
     }
-    section {
-      margin-bottom: 4rem;
+  }
+
+      .molecule-background {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.15;
+    overflow: visible;
+  }
+
+  .molecule {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    opacity: 0.7;
+    animation: float 20s ease-in-out infinite;
+  }
+
+  /* Scatter molecules in different screen positions */
+  .molecule:nth-child(1) {
+    top: 20vh;
+    left: 15vw;
+    animation-duration: 22s;
+  }
+  .molecule:nth-child(2) {
+    top: 55vh;
+    left: 50vw;
+    animation-duration: 25s;
+    opacity: 0.6;
+  }
+  .molecule:nth-child(3) {
+    top: 35vh;
+    left: 80vw;
+    animation-duration: 28s;
+    opacity: 0.5;
+  }
+
+  /* Orbit animations */
+  .orbit-group {
+    transform-origin: 200px 200px;
+    animation: orbit 14s linear infinite;
+    animation-delay: calc(var(--angle) / 360 * -14s);
+    stroke: var(--color);
+    fill: var(--color);
+  }
+
+  .molecule:nth-child(2) .orbit-group {
+    animation-duration: 18s;
+  }
+  .molecule:nth-child(3) .orbit-group {
+    animation-duration: 20s;
+  }
+
+  @keyframes orbit {
+    from {
+      transform: rotate(0deg);
     }
-    h2 {
-      border-bottom: 3px solid #2c7be5;
-      padding-bottom: 0.3rem;
-      margin-bottom: 1rem;
-      font-family: 'Roboto Mono', monospace;
-      font-weight: 700;
-      color: #172b4d;
+    to {
+      transform: rotate(360deg);
     }
-    p {
-      line-height: 1.6;
-      font-size: 1.1rem;
-      color: #444;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
     }
-    /* Projects grid */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.8rem;
+    50% {
+      transform: translateY(10px) translateX(10px);
     }
-    .project-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
-      transition: box-shadow 0.2s ease;
-    }
-    .project-card:hover {
-      box-shadow: 0 6px 12px rgb(0 0 0 / 0.15);
-    }
-    .project-title {
-      font-family: 'Roboto Mono', monospace;
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: #172b4d;
-    }
-    .project-desc {
-      font-size: 0.95rem;
-      color: #555;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: #172b4d;
-      color: white;
-      font-size: 0.9rem;
-    }
-  </style>
+  }
+
+ </style>
+
 </head>
+
 <body>
   <header>
     <h1>QuantReasoning</h1>
     <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="data_analytics.html">Data Analytics</a>
-      <a href="bioinformatics.html">Bioinformatics</a>
-       <a href="#contact">Contact</a>
+    <a href="https://quantreasoning.github.io/#about">About</a>
+    <a href="https://quantreasoning.github.io/#projects">Projects</a>
+    <a href="data_analytics.html">Data Analytics</a>
+    <a href="bioinformatics.html">Bioinformatics</a>
+    <a href="https://quantreasoning.github.io/#contact">Contact</a>
     </nav>
   </header>
+
+  <div class="molecule-background">
+    <!-- Molecule 1 (blue-ish) -->
+    <svg class="molecule" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" >
+      <circle cx="200" cy="200" r="16" fill="#2c7be5" />
+      <g class="orbit-group" style="--angle:0deg; --radius:80; --color:#049bff;">
+        <line x1="200" y1="200" x2="280" y2="200" stroke="#5dade2" stroke-width="2"/>
+        <circle cx="280" cy="200" r="10" fill="#5dade2" />
+      </g>
+      <g class="orbit-group" style="--angle:120deg; --radius:70; --color:#0b94ef;">
+        <line x1="200" y1="200" x2="200" y2="130" stroke="#5499c7" stroke-width="2"/>
+        <circle cx="200" cy="130" r="10" fill="#5499c7" />
+      </g>
+      <g class="orbit-group" style="--angle:240deg; --radius:90; --color:#1e5a82;">
+        <line x1="200" y1="200" x2="110" y2="230" stroke="#7fb3d5" stroke-width="2"/>
+        <circle cx="110" cy="230" r="10" fill="#7fb3d5" />
+      </g>
+    </svg>
+
+    <!-- Molecule 2 (green-ish) -->
+    <svg class="molecule" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" >
+      <circle cx="200" cy="200" r="16" fill="#27ae60" />
+      <g class="orbit-group" style="--angle:0deg; --radius:75; --color:#035626;">
+        <line x1="200" y1="200" x2="275" y2="200" stroke="#2ecc71" stroke-width="2"/>
+        <circle cx="275" cy="200" r="10" fill="#2ecc71" />
+      </g>
+      <g class="orbit-group" style="--angle:135deg; --radius:60; --color:#096831;">
+        <line x1="200" y1="200" x2="200" y2="140" stroke="#27ae60" stroke-width="2"/>
+        <circle cx="200" cy="140" r="10" fill="#27ae60" />
+      </g>
+      <g class="orbit-group" style="--angle:255deg; --radius:85; --color:#066e31;">
+        <line x1="200" y1="200" x2="115" y2="235" stroke="#2ecc71" stroke-width="2"/>
+        <circle cx="115" cy="235" r="10" fill="#2ecc71" />
+      </g>
+    </svg>
+
+    <!-- Molecule 3 (purple-ish) -->
+    <svg class="molecule" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" >
+      <circle cx="200" cy="200" r="16" fill="#8e44ad" />
+      <g class="orbit-group" style="--angle:0deg; --radius:78; --color:#c43ef9;">
+        <line x1="200" y1="200" x2="278" y2="200" stroke="#9b59b6" stroke-width="2"/>
+        <circle cx="278" cy="200" r="10" fill="#9b59b6" />
+      </g>
+      <g class="orbit-group" style="--angle:110deg; --radius:72; --color:#b648e5;">
+        <line x1="200" y1="200" x2="200" y2="128" stroke="#8e44ad" stroke-width="2"/>
+        <circle cx="200" cy="128" r="10" fill="#8e44ad" />
+      </g>
+      <g class="orbit-group" style="--angle:250deg; --radius:82; --color:#f052e3;">
+        <line x1="200" y1="200" x2="118" y2="232" stroke="#9b59b6" stroke-width="2"/>
+        <circle cx="118" cy="232" r="10" fill="#9b59b6" />
+      </g>
+    </svg>
+  </div>
+
 
   <main>
     <section id="about">
@@ -130,58 +315,81 @@
     </p>
     </section>
 
-    <section id="projects">
+     <section id="projects">
       <h2>Selected Projects</h2>
       <div class="projects">
         <div class="project-card">
-          <div class="project-title"> Single-Cell RNA-seq Analysis </div>
+          <div class="project-title">Single-Cell RNA-seq Analysis</div>
           <div class="project-desc">
             This project performs single-cell transcriptomic analysis of human lung cancer FFPE tissue using R (Seurat, DESeq2, ggplot2) on publicly available 10x Genomics data to identify and visualize cell types and differentially expressed genes.
           </div>
         </div>
 
-         <div class="project-card">
-          <div class="project-title"> <a href="https://github.com/ancadordea/QSAR_SARS_3Clike_proteinase" target="_blank" rel="noopener noreferrer"> QSAR SARS-CoV-2 </a> </div>
+        <div class="project-card">
+          <div class="project-title">
+            <a href="https://github.com/ancadordea/QSAR_SARS_3Clike_proteinase" target="_blank" rel="noopener noreferrer">
+              QSAR SARS-CoV
+            </a>
+          </div>
           <div class="project-desc">
             QSAR model using Random Forest regression to predict molecular bioactivity (pIC₅₀) from ECFP4 fingerprints. The workflow includes data preprocessing, stratified splitting, and feature importance analysis to highlight key substructures influencing activity.
-        </div>
+          </div>
         </div>
 
         <div class="project-card">
-          <div class="project-title"> <a href="https://github.com/ancadordea/Streamlit_Stats_App" target="_blank" rel="noopener noreferrer"> Streamlit Statistical Web App </a> </div>
+          <div class="project-title">
+            <a href="https://github.com/ancadordea/Streamlit_Stats_App" target="_blank" rel="noopener noreferrer">
+              Streamlit Statistical Web App
+            </a>
+          </div>
           <div class="project-desc">
             Statpy is a no-code statistical web app that helps users run t-tests, ANOVA, Chi-square, and correlation analyses directly in the browser. Designed for accessibility, it empowers researchers, students, and analysts to explore their data and interpret results without writing a single line of code.
           </div>
         </div>
 
         <div class="project-card">
-          <div class="project-title"> <a href="https://github.com/ancadordea/Patient_Risk_Stratification" target="_blank" rel="noopener noreferrer">  Patient Risk Stratification (R) </a> </div>
+          <div class="project-title">
+            <a href="https://github.com/ancadordea/Patient_Risk_Stratification" target="_blank" rel="noopener noreferrer">
+              Patient Risk Stratification (R)
+            </a>
+          </div>
           <div class="project-desc">
             Created a synthetic clinical dataset and implemented a multinomial logistic regression model in R to stratify patients into Low, Medium, and High risk groups based on age, diagnosis, and length of stay; The model achieved an overall accuracy of 88.3%.
           </div>
         </div>
 
         <div class="project-card">
-          <div class="project-title"> <a href="https://github.com/ancadordea/KNN-CV_Breast_Cancer_Diagnosis_Model" target="_blank" rel="noopener noreferrer">  KNN and Cross Validation Cancer Model </a> </div>
+          <div class="project-title">
+            <a href="https://github.com/ancadordea/KNN-CV_Breast_Cancer_Diagnosis_Model" target="_blank" rel="noopener noreferrer">
+              KNN and Cross Validation Cancer Model
+            </a>
+          </div>
           <div class="project-desc">
             This project uses Python and the K-Nearest Neighbors (KNN) algorithm to classify tumors in the Breast Cancer Wisconsin dataset, achieving a test set accuracy of 95.7% through feature scaling, cross-validation, and evaluation with precision, recall, F1-score, and a confusion matrix.
           </div>
         </div>
 
         <div class="project-card">
-          <div class="project-title"> <a href="https://github.com/ancadordea/Diabetes_prediction" target="_blank" rel="noopener noreferrer"> Diabetes Prediction Model (R) </a> </div>
+          <div class="project-title">
+            <a href="https://github.com/ancadordea/Diabetes_prediction" target="_blank" rel="noopener noreferrer">
+              Diabetes Prediction Model (R)
+            </a>
+          </div>
           <div class="project-desc">
             Developed a logistic regression model in R to predict diabetes risk using the Pima Indians dataset, with 76% accuracy.
           </div>
         </div>
 
         <div class="project-card">
-         <div class="project-title"> <a href="https://github.com/ancadordea/Cancer_Cells_Classification" target="_blank" rel="noopener noreferrer"> Cancer Cell Classification </a> </div>
-         <div class="project-desc">
+          <div class="project-title">
+            <a href="https://github.com/ancadordea/Cancer_Cells_Classification" target="_blank" rel="noopener noreferrer">
+              Cancer Cell Classification
+            </a>
+          </div>
+          <div class="project-desc">
             A supervised classification analysis in Python, on data derived from breast cancer cell nuclei features, using pandas, scikit-learn, matplotlib, and seaborn to classify tumors as malignant or benign, achieving 94–96% accuracy with a Naive Bayes classifier.
           </div>
         </div>
-
       </div>
     </section>
 
