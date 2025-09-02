@@ -6,111 +6,141 @@
   <title>Data Analytics | QuantReasoning</title>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    :root{
+      --paper: #f6f3ec;     
+      --ink:   #0f1115;      
+      --navy:  #0b1f3a;      
+      --accent:#c8102e;       
+      --accent-600:#e03547;   
+      --muted: #5d6470;      
+      --card:  #ffffff;       
+      --line:  #e6e2da;       
+      --shadow: 0 6px 18px rgba(0,0,0,.08);
+      --shadow-hover: 0 10px 24px rgba(0,0,0,.12);
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; }
     body {
       font-family: 'Merriweather', serif;
-      background: #fdf8f4;
-      color: #111;
+      background: var(--paper);
+      color: var(--ink);
       margin: 0;
-      padding: 0;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     header {
-      background-color: #111;
-      color: white;
-      padding: 1.5rem 2rem;
+      background-color: var(--navy);
+      color: #fff;
+      padding: 1.25rem 2rem;
       display: flex;
+      gap: 1rem;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 4px solid var(--accent);
     }
 
     header h1 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: .5px;
+      margin: 0;
     }
 
     nav a {
-      margin-left: 1.5rem;
-      color: #ff6900;
+      margin-left: 1.25rem;
+      color: #fff;
       font-weight: 700;
       text-decoration: none;
-      transition: color 0.3s;
+      position: relative;
+      padding-bottom: 2px;
     }
-
-    nav a:hover {
-      color: #ffa366;
+    nav a::after{
+      content:"";
+      position:absolute;
+      left:0; bottom:-4px;
+      width:0; height:2px;
+      background: var(--accent);
+      transition: width .25s ease;
     }
+    nav a:hover::after{ width:100%; }
 
     main {
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
+      max-width: 980px;
+      margin: 2.5rem auto 3.5rem;
+      padding: 0 1.25rem;
     }
 
     h2 {
-      font-size: 2rem;
-      border-bottom: 4px solid #ff6900;
+      font-size: 1.9rem;
+      margin: 2rem 0 1.25rem;
+      padding-bottom: .4rem;
       display: inline-block;
-      padding-bottom: 0.4rem;
-      margin-bottom: 2rem;
+      border-bottom: 4px solid var(--accent);
+    }
+
+    .intro-section .intro-text{
+      color: var(--muted);
+      margin-top: .5rem;
     }
 
     .analytics-projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
     .analytics-card {
-      background: white;
-      border: 1px solid #eee;
-      border-left: 5px solid #ff6900;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--accent);
+      padding: 1.25rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
     }
-
     .analytics-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-left-color: var(--accent-600);
     }
 
     .analytics-title a {
-      font-weight: bold;
-      font-size: 1.2rem;
-      color: #111;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--ink);
       text-decoration: none;
     }
-
-    .analytics-title a:hover {
-      color: #ff6900;
-    }
+    .analytics-title a:hover { color: var(--accent); }
 
     .analytics-desc {
-      margin-top: 0.6rem;
+      margin-top: .6rem;
       font-size: 1rem;
-      color: #333;
-      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    img.card-image{
+      width:100%;
+      border-radius: 8px;
+      margin-top: 1rem;
+      border: 1px solid var(--line);
     }
 
     footer {
       text-align: center;
       padding: 2rem 1rem;
-      background-color: #111;
-      color: white;
+      background-color: var(--navy);
+      color: #fff;
       font-size: 0.9rem;
-      margin-top: 4rem;
+      border-top: 3px solid var(--accent);
     }
 
-    @media (max-width: 600px) {
-      header, main {
-        padding: 1rem;
-      }
-      nav a {
-        margin-left: 0.8rem;
-        font-size: 0.9rem;
-      }
+    @media (max-width: 720px) {
+      header { padding: 1rem; }
+      nav a { margin-left: .9rem; font-size: .95rem; }
+      main { padding: 0 1rem; }
     }
   </style>
 </head>
@@ -129,103 +159,103 @@
 
   <main>
     <section class="intro-section">
-    <h2>About Me</h2>
-    <p class="intro-text">
-        I am a Data Scientist and Biomedical Researcher with a First-Class Honours degree in Medical Sciences from the University of Exeter, currently enrolled at MIT in Data Science and Statistics.
-      <br /><br />
-      I have a strong foundation in both life sciences and quantitative analysis, I bring extensive experience in clinical trials, academic research, and real-world data analytics. I specialise in data cleaning, EDAs, machine learning, and effective data communication through dashboards and visual storytelling.
-      <br /><br />
-      From predicting molecular bioactivity and analysing patient risk to pricing models and SQL-based insights, I am passionate about using data to solve meaningful problems.
-      <br /><br />
-      Outside of data and science, I am a bookworm, who enjoys reading both fiction and non-fiction. Whether it's a fantasy book or a deep dive into quantum mechanics , I love learning through books and exploring how stories and science intersect.
-    </p>
+      <h2>About Me</h2>
+      <p class="intro-text">
+        I am a Data Analyst and Biomedical Researcher with a First-Class Honours degree in Medical Sciences from the University of Exeter, currently enrolled at MIT in Data Science and Statistics.
+        <br /><br />
+        I specialise in data cleaning, EDA, machine learning, and clear data storytelling through dashboards and visual reports.
+        <br /><br />
+        From predicting molecular bioactivity and analysing patient risk to pricing models and SQL-based insights, I’m focused on using data to solve meaningful problems.
+        <br /><br />
+        Outside of data and science, I’m a bookworm who enjoys both fiction and non-fiction—always looking for the places where stories and science intersect.
+      </p>
     </section>
 
     <h2>Data Analytics Projects</h2>
     <div class="analytics-projects">
-       <div class="analytics-card">
+      <div class="analytics-card">
         <div class="analytics-title">
-           <a href="https://github.com/ancadordea/Penguin_E-Book_Pricing_Analysis_and_Prediction" target="_blank" rel="noopener noreferrer">
-              Penguin E-Book Pricing Analysis and Prediction
-            </a>
-          </div>
+          <a href="https://github.com/ancadordea/bloomsbury-project" target="_blank" rel="noopener noreferrer">
+            Bloomsbury Commercial Analysis Workbook
+          </a>
+        </div>
         <div class="analytics-desc">
-         EDA by filtering Penguin books from the dataset, cleaning and preprocessing key features: price, ratings, and reviews; visualising the distributions of price and ratings, and extracting important keywords from book titles using TF-IDF to see patterns influencing pricing.
-
-         Built a Tableau Dashboard and an ML model: a Random Forest Regressorto predict e-book prices based on ratings, reviews, and title keywords.
-
+          A commercial analysis workflow that generates an Excel workbook with acquisition P&L models, forecast vs actuals reviews, list shape reporting, schedule risk checks, sales performance, and advances recoupment.
         </div>
       </div>
 
-
-      <div class="analytics-card">
+        <div class="analytics-card">
         <div class="analytics-title">
-           <a href="https://github.com/ancadordea/QSAR_SARS_3Clike_proteinase" target="_blank" rel="noopener noreferrer">
-              QSAR SARS-CoV
-            </a>
-          </div>
+          <a href="https://github.com/ancadordea/Penguin_E-Book_Pricing_Analysis_and_Prediction" target="_blank" rel="noopener noreferrer">
+            Penguin E-Book Pricing Analysis & Prediction
+          </a>
+        </div>
         <div class="analytics-desc">
-         QSAR model using Random Forest regression to predict molecular bioactivity (pIC₅₀) from ECFP4 fingerprints. EDA to check relationships between data: bioactivity, distribution IC60/pIC50, molecular descriptors. The workflow includes data preprocessing, stratified splitting, and feature importance analysis to highlight key substructures influencing activity.
+          EDA on Penguin titles; cleaning/preprocessing price, ratings, and reviews; visualising price and rating distributions; TF-IDF keywords from titles to inspect pricing patterns.  
+          Built a Tableau dashboard and a Random Forest regressor to predict e-book prices.
         </div>
       </div>
 
       <div class="analytics-card">
         <div class="analytics-title">
-          <a href="https://github.com/ancadordea/SQL_projects" target="_blank">SQL projects</a>
+          <a href="https://github.com/ancadordea/QSAR_SARS_3Clike_proteinase" target="_blank" rel="noopener noreferrer">
+            QSAR — SARS-CoV
+          </a>
         </div>
         <div class="analytics-desc">
-          A set of SQL projects designed to sharpen my data querying and management skills.
+          Random Forest regression to predict molecular bioactivity (pIC₅₀) from ECFP4 fingerprints. Includes EDA, stratified splitting, and feature importance to highlight substructures driving activity.
         </div>
       </div>
 
       <div class="analytics-card">
         <div class="analytics-title">
-       <a href="https://github.com/ancadordea/Patient_Risk_Stratification" target="_blank" rel="noopener noreferrer">
-              Patient Risk Stratification (in R)
-            </a>
+          <a href="https://github.com/ancadordea/SQL_projects" target="_blank">SQL Projects</a>
         </div>
         <div class="analytics-desc">
-          EDA for visualising key variables: age distribution, diagnosis counts, daily admissions over time, relationship between treatment cost and length of stay. Created a synthetic clinical dataset and implemented a multinomial logistic regression model in R to stratify patients into Low, Medium, and High risk groups based on age, diagnosis, and length of stay; The model achieved an overall accuracy of 88.3%.
+          A set of SQL exercises and mini-projects focused on querying, joins, window functions, and reporting.
         </div>
       </div>
 
-    </div>
-
-  
-  <h2>Posters & Dashboards</h2>
-  <div class="analytics-projects">
-
-    <div class="analytics-card">
-      <div class="analytics-title">
-        <a href="images/drug_dev_poster.png" target="_blank">Drug Development for IPF Poster</a>
-      </div>
-      <img src="images/drug_dev_poster.png" alt="Drug Development Poster" style="width:100%; border-radius: 6px; margin-top: 1rem;" />
-      <div class="analytics-desc">
-        A visual summary of a study investigating potential drug targets for Idiopathic Pulmonary Fibrosis using pathway enrichment and target prioritization.
+      <div class="analytics-card">
+        <div class="analytics-title">
+          <a href="https://github.com/ancadordea/Patient_Risk_Stratification" target="_blank" rel="noopener noreferrer">
+            Patient Risk Stratification (R)
+          </a>
+        </div>
+        <div class="analytics-desc">
+          Synthetic clinical dataset; EDA of key variables; multinomial logistic regression to classify Low/Medium/High risk by age, diagnosis, and length of stay (overall accuracy ~88%).
+        </div>
       </div>
     </div>
 
-    <div class="analytics-card">
-      <div class="analytics-title">
-        <a href="https://github.com/ancadordea/Penguin_E-Book_Pricing_Analysis_and_Prediction" target="_blank" rel="noopener noreferrer">
-          Penguin Visual Dashboard Tableau
-        </a>
+    <h2>Posters & Dashboards</h2>
+    <div class="analytics-projects">
+      <div class="analytics-card">
+        <div class="analytics-title">
+          <a href="images/drug_dev_poster.png" target="_blank">Drug Development for IPF — Poster</a>
+        </div>
+        <img class="card-image" src="images/drug_dev_poster.png" alt="Drug Development Poster" />
+        <div class="analytics-desc">
+          Visual summary of a study investigating targets for Idiopathic Pulmonary Fibrosis via pathway enrichment and target prioritisation.
+        </div>
       </div>
-      <img src="images/penguin_dashboaard.png" alt="Drug Development Poster" style="width:100%; border-radius: 6px; margin-top: 1rem;" />
-      <div class="analytics-desc">
-        This interactive dashboard provides a deep dive into the pricing landscape of Penguin e-books. Using real Kindle data, the dashboard shows patterns in pricing, popularity, and publisher behavior.<br />
-        Download the ".twb" file from the repository.
+
+      <div class="analytics-card">
+        <div class="analytics-title">
+          <a href="https://github.com/ancadordea/Penguin_E-Book_Pricing_Analysis_and_Prediction" target="_blank" rel="noopener noreferrer">
+            Penguin Pricing — Tableau Dashboard
+          </a>
+        </div>
+        <img class="card-image" src="images/penguin_dashboaard.png" alt="Penguin Dashboard" />
+        <div class="analytics-desc">
+          Interactive dashboard exploring Penguin e-book pricing, popularity, and publisher behaviour. Download the <code>.twb</code> file from the repository.
+        </div>
       </div>
     </div>
-
-  </div>
-
-
-
   </main>
 
   <footer>
-    &copy; 2025 QuantReasoning. 
+    &copy; 2025 QuantReasoning.
   </footer>
 </body>
 </html>
