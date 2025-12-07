@@ -92,6 +92,11 @@
       gap: 1.5rem;
     }
 
+    .posters-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+
     .analytics-card {
       background: var(--card);
       border: 1px solid var(--line);
@@ -242,44 +247,61 @@
       </div>
     </div>
 
-    <h2>Posters & Dashboards</h2>
+  <h2>Posters & Dashboards</h2>
 
-      <div class="analytics-projects">
-        <div class="analytics-card">
-          <div class="analytics-title">
-            <a href="https://github.com/ancadordea/penguin_sales_data" target="_blank"> Penguin Sales Data - Power BI dashboard</a>
-          </div>
-          <img class="card-image" src="images/powerbi_dashboard.png" alt="Drug Development Poster" />
-          <div class="analytics-desc">
-            This dashboard visualises how February 2023 price changes influenced Penguin’s UK sales, revealing patterns in revenue, unit demand, and title-specific price sensitivity (synthetic data)
-          </div>
-        </div>
 
-      <div class="analytics-card">
-        <div class="analytics-title">
-          <a href="https://github.com/ancadordea/Penguin_E-Book_Pricing_Analysis_and_Prediction" target="_blank" rel="noopener noreferrer">
-            Penguin Pricing — Tableau Dashboard
-          </a>
-        </div>
-        <img class="card-image" src="images/penguin_dashboaard.png" alt="Penguin Dashboard - Tableau" />
-        <div class="analytics-desc">
-          Interactive dashboard exploring Penguin e-book pricing, popularity, and publisher behaviour. Download the <code>.twb</code> file from the repository.
-        </div>
-      </div>
+<div class="analytics-projects posters-grid">
 
-      <div class="analytics-projects">
-        <div class="analytics-card">
-          <div class="analytics-title">
-            <a href="images/drug_dev_poster.png" target="_blank">Drug Development for IPF — Poster</a>
-          </div>
-          <img class="card-image" src="images/drug_dev_poster.png" alt="Drug Development Poster" />
-          <div class="analytics-desc">
-            Visual summary of a study investigating targets for Idiopathic Pulmonary Fibrosis via pathway enrichment and target prioritisation.
-          </div>
-        </div>
 
+  <div class="analytics-card">
+    <div class="analytics-title">
+      <a href="https://github.com/ancadordea/penguin_sales_data" target="_blank">
+        Penguin Sales Data - Power BI Dashboard
+      </a>
     </div>
+    <img class="card-image" src="images/powerbi_dashboard.png" alt="Penguin Power BI Dashboard" />
+    <div class="analytics-desc">
+      This dashboard visualises how February 2023 price changes influenced Penguin’s UK sales, revealing patterns in revenue, unit demand, and title-specific price sensitivity (synthetic data).
+    </div>
+  </div>
 
+  <div class="analytics-card">
+    <div class="analytics-title">
+      <a href="https://github.com/ancadordea/Student_Performance.git" target="_blank">
+        Student Performance - Power BI Dashboard
+      </a>
+    </div>
+    <img class="card-image" src="images/student_performance.png" alt="Student Performance Dashboard" />
+    <div class="analytics-desc">
+      This dashboard explores how study habits, sleep, practice papers, and activities relate to student performance with KPIs and risk indicators.
+    </div>
+  </div>
+
+  <div class="analytics-card">
+    <div class="analytics-title">
+      <a href="https://github.com/ancadordea/Penguin_E-Book_Pricing_Analysis_and_Prediction" target="_blank">
+        Penguin Pricing — Tableau Dashboard
+      </a>
+    </div>
+    <img class="card-image" src="images/penguin_dashboaard.png" alt="Penguin Tableau Dashboard" />
+    <div class="analytics-desc">
+      Interactive Tableau dashboard exploring Penguin e-book pricing, popularity, and publisher behaviour.
+    </div>
+  </div>
+
+  <div class="analytics-card">
+    <div class="analytics-title">
+      <a href="images/drug_dev_poster.png" target="_blank">
+        Drug Development for IPF - Poster
+      </a>
+    </div>
+    <img class="card-image" src="images/drug_dev_poster.png" alt="Drug Development Poster" />
+    <div class="analytics-desc">
+      Visual summary of a study investigating targets for Idiopathic Pulmonary Fibrosis via pathway enrichment and prioritisation.
+    </div>
+  </div>
+
+</div>
     
   </main>
 
